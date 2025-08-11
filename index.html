@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>xgram quick swap</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* 파란 배경(심플) */
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0d2aa6, #1f48ff 55%, #0b1e74);
+      display: grid;
+      place-items: center; /* 화면 정중앙 배치 */
+    }
+
+    /* 배너만 보이게: 컨테이너 + 비율 유지 */
+    .banner {
+      width: min(528px, 100vw - 24px);   /* 작은 화면에선 자동 축소 */
+      aspect-ratio: 528 / 392;           /* 배너 비율 고정 */
+      position: relative;
+      overflow: hidden;                  /* 외곽 잘라내기 */
+      border-radius: 10px;               /* 모서리 둥글게 */
+    }
+    .banner iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+      opacity: 0; transform: scale(.98);
+      animation: fadeIn .6s ease-out .1s forwards;
+      background: transparent;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* 아주 작은 화면에서 상하 여백만 확보 */
+    main { width: 100%; display: grid; place-items: center; padding: 12px 0 24px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="banner">
+      <iframe
+        id="simpleswap-frame"
+        name="SimpleSwap Widget"
+        src="https://simpleswap.io/widget/b36be028-3709-4cff-ad74-9f09ff81c8f3">
+      </iframe>
+    </div>
+  </main>
+</body>
+</html>
